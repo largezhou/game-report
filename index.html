@@ -17,7 +17,6 @@
   --ink:#e4e2d8;
   --ink2:#8a8892;
   --ink3:#555a64;
-  /* 三档: 绿 / 琥珀 / 红 */
   --green:#7ed3a4;
   --green-fill:rgba(126,211,164,.15);
   --cyan:#64dfdf;
@@ -34,16 +33,11 @@
 html{scroll-behavior:smooth}
 
 body{
-  background:var(--bg);
-  color:var(--ink);
-  font-family:var(--font-mono);
-  font-size:13px;
-  line-height:1.6;
-  -webkit-font-smoothing:antialiased;
-  position:relative;
+  background:var(--bg);color:var(--ink);font-family:var(--font-mono);
+  font-size:13px;line-height:1.6;-webkit-font-smoothing:antialiased;position:relative;
 }
 
-/* ── 56px 赛博网格 + radial mask 渐隐 ── */
+/* 56px 赛博网格 + radial mask 渐隐 */
 body::before{
   content:'';position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.35;
   background-image:linear-gradient(rgba(126,211,164,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(126,211,164,.08) 1px,transparent 1px);
@@ -52,23 +46,22 @@ body::before{
   -webkit-mask-image:radial-gradient(ellipse at 50% 50%,black 30%,transparent 80%);
 }
 
-/* ── CRT 暗角 ── */
+/* CRT 暗角 */
 body::after{
   content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
   background:radial-gradient(ellipse at 50% 50%,transparent 50%,rgba(0,0,0,.6) 100%);
 }
 
-/* ── 扫描线 (绿色 + screen blend) ── */
+/* 扫描线 (绿色 + screen blend) */
 .scanlines{
   position:fixed;inset:0;pointer-events:none;z-index:9998;
   background:repeating-linear-gradient(180deg,transparent 0,transparent 3px,rgba(126,211,164,.025) 3px,rgba(126,211,164,.025) 4px);
   mix-blend-mode:screen;
 }
 
-/* ── Layout ── */
 .wrap{max-width:860px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
 
-/* ── Chrome dots ── */
+/* Chrome dots */
 .chrome{display:flex;align-items:center;gap:8px;padding:12px 0;margin-bottom:8px}
 .chrome .dots{display:flex;gap:8px}
 .chrome .dots span{width:11px;height:11px;border-radius:50%}
@@ -77,27 +70,24 @@ body::after{
 .chrome .dots span:nth-child(3){background:var(--green)}
 .chrome div:last-child{font-size:11px;color:var(--ink2);margin-left:auto;letter-spacing:.18em;text-transform:uppercase}
 
-/* ── Prompt ── */
+/* Prompt */
 .prompt{font-size:12px;color:var(--green);font-weight:500;margin-bottom:4px}
 .prompt::before{content:'$ ';color:var(--cyan)}
 .prompt .cmd{color:var(--ink)}
 
-/* ── Hero ── */
+/* Hero */
 .hero-title{
-  font-family:'JetBrains Mono',monospace;
-  font-size:72px;font-weight:700;line-height:1.05;letter-spacing:-.02em;
-  color:var(--green);
-  text-shadow:0 0 30px rgba(126,211,164,.35),0 0 60px rgba(126,211,164,.1);
+  font-family:'JetBrains Mono',monospace;font-size:72px;font-weight:700;line-height:1.05;letter-spacing:-.02em;
+  color:var(--green);text-shadow:0 0 30px rgba(126,211,164,.35),0 0 60px rgba(126,211,164,.1);
 }
-.cursor{display:inline-block;width:12px;height:1em;background:var(--green);
-  vertical-align:middle;margin-left:6px;animation:hcBlink 1s steps(2) infinite}
+.cursor{display:inline-block;width:12px;height:1em;background:var(--green);vertical-align:middle;margin-left:6px;animation:hcBlink 1s steps(2) infinite}
 @keyframes hcBlink{50%{opacity:0}}
 
 .lede{font-size:18px;line-height:1.7;color:var(--ink2);max-width:780px;font-family:var(--font-sans);font-weight:300}
 .h2{font-size:46px;font-weight:600;color:var(--ink);margin-bottom:10px;letter-spacing:-.015em}
 .h3{font-size:22px;font-weight:600;color:var(--amber);margin-bottom:10px}
 
-/* ── Tag (三档 + 背景 + 4px radius) ── */
+/* Tag */
 .tag{
   display:inline-block;font-family:var(--font-mono);font-size:11px;
   padding:3px 10px;border:1px solid var(--border);border-radius:4px;
@@ -106,11 +96,11 @@ body::after{
 .tag.amber{color:var(--amber);border-color:rgba(233,197,138,.2);background:rgba(233,197,138,.04)}
 .tag.red{color:var(--red);border-color:rgba(255,107,107,.25);background:rgba(255,107,107,.05)}
 
-/* ── Section ── */
+/* Section */
 .section{padding:48px 0;position:relative;z-index:1}
 .section+hr{border:none;border-top:1px solid rgba(126,211,164,.1)}
 
-/* ── KPI Grid ── */
+/* KPI Grid */
 .kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:24px}
 .kpi-grid .card{
   background:var(--surface);border:1px solid var(--border);border-radius:10px;
@@ -122,7 +112,7 @@ body::after{
 .kpi-grid .value.amber{color:var(--amber)}
 .kpi-grid .sub{font-size:13px;color:var(--ink2);margin-top:10px;line-height:1.55;font-family:var(--font-sans)}
 
-/* ── Now Playing ── */
+/* Now Playing */
 .now-playing{
   background:var(--surface);border:1px solid var(--border);border-radius:10px;
   padding:20px 24px;margin-top:24px;position:relative;overflow:hidden}
@@ -138,22 +128,21 @@ body::after{
 .now-playing .np-meta{font-size:13px;color:var(--ink2);line-height:1.6;font-family:var(--font-sans)}
 .now-playing .np-meta span{color:var(--amber)}
 
-/* ── Genre Bar (stroke-only) ── */
+/* Genre Bar (stroke-only) */
 .genre-row{display:flex;align-items:center;gap:12px;margin-bottom:8px}
 .genre-row .g-name{width:80px;text-align:right;font-size:12px;color:var(--ink2);flex-shrink:0}
 .genre-row .g-track{flex:1;height:20px;border:1px solid var(--border);border-radius:2px;position:relative;background:transparent}
-.genre-row .g-fill{height:100%;border-right:2px solid var(--green);background:transparent;border-radius:2px;
-  transition:width .6s ease}
+.genre-row .g-fill{height:100%;border-right:2px solid var(--green);background:transparent;border-radius:2px;transition:width .6s ease}
 .genre-row .g-count{font-size:11px;color:var(--ink3);width:28px;flex-shrink:0}
 
-/* ── Insight ── */
+/* Insight */
 .insight{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid rgba(126,211,164,.1)}
 .insight:last-child{border-bottom:none}
 .insight .icon{font-size:18px;flex-shrink:0;width:28px;text-align:center}
 .insight .title{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:2px}
 .insight .text{font-family:var(--font-sans);font-size:13px;color:var(--ink2);line-height:1.55}
 
-/* ── Series ── */
+/* Series */
 .series-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:24px}
 .series-card{
   background:var(--surface);border:1px solid var(--border);border-radius:10px;
@@ -167,19 +156,19 @@ body::after{
 .series-card .s-fill{height:100%;background:var(--green);border-radius:2px}
 .series-card .s-games{font-size:11px;color:var(--ink3)}
 
-/* ── Games Grid ── */
+/* Games Grid */
 .games-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:6px;margin-bottom:4px}
 .game-chip{font-size:12px;padding:8px 12px;border:1px solid var(--border);border-radius:2px;
   color:var(--ink);background:transparent;transition:border-color .15s}
 .game-chip:hover{border-color:var(--green)}
 
-/* ── Backlog ── */
+/* Backlog */
 .backlog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:6px;margin-top:12px}
 .backlog-chip{font-size:12px;padding:10px 14px;border:1px solid var(--amber-fill);
   border-left:2px solid var(--amber);border-radius:2px;color:var(--ink2);background:transparent}
 .backlog-chip .b-genre{font-size:10px;color:var(--ink3);margin-top:2px}
 
-/* ── CTA card ── */
+/* CTA card */
 .cta-card{
   background:var(--surface);border:1px solid rgba(233,197,138,.2);border-radius:10px;
   padding:20px 24px;margin-top:20px;position:relative;overflow:hidden}
@@ -189,13 +178,12 @@ body::after{
 .cta-card .name{font-size:20px;font-weight:700;color:var(--green);margin:6px 0}
 .cta-card .desc{font-family:var(--font-sans);font-size:13px;color:var(--ink2);line-height:1.55}
 
-/* ── Footer ── */
+/* Footer */
 .foot{
   padding:48px 0 32px;font-size:10px;color:var(--ink2);letter-spacing:.2em;text-transform:uppercase;
   border-top:1px solid rgba(126,211,164,.1);position:relative;z-index:1}
-.foot .line{width:48px;height:1px;background:var(--border);margin-bottom:16px}
 
-/* ── Responsive ── */
+/* Responsive */
 @media(max-width:640px){
   .kpi-grid{grid-template-columns:1fr 1fr}
   .series-grid{grid-template-columns:1fr}
@@ -213,7 +201,7 @@ body::after{
     <div class="chrome"><div class="dots"><span></span><span></span><span></span></div><div>~/gaming · zsh · 118x42</div></div>
     <div class="prompt">whoami <span class="cmd">--gaming</span></div>
     <h1 class="hero-title">GAMING<br>REPORT<span class="cursor"></span></h1>
-    <p class="lede" style="margin-top:14px">49 款已通关 · 14 款待挑战 · 1 款进行中 · 16 个类型全覆盖。<br>从战神到黑神话，从蜘蛛侠到茶杯头——一份完整的游戏品味档案。</p>
+    <p class="lede" style="margin-top:14px">49 款已通关 · 13 款待挑战 · 1 款进行中 · 6 个类型全覆盖。<br>从战神到黑神话，从蜘蛛侠到茶杯头——一份完整的游戏品味档案。</p>
     <div style="margin-top:26px">
       <span class="tag">ps5-native</span>
       <span class="tag">49-done</span>
@@ -230,10 +218,10 @@ body::after{
     <h2 class="h2">核心数据</h2>
     <p class="lede">一眼看完所有关键指标</p>
     <div class="kpi-grid">
-      <div class="card"><div class="label">已通关</div><div class="val">49</div><div class="sub">款游戏完成</div></div>
-      <div class="card"><div class="label">待挑战</div><div class="val" style="color:var(--amber)">14</div><div class="sub">款排队中</div></div>
-      <div class="card"><div class="label">完成率</div><div class="val">78%</div><div class="sub">49 / 63 总收录</div></div>
-      <div class="card"><div class="label">PS 独占</div><div class="val">22</div><div class="sub">占通关 46%</div></div>
+      <div class="card"><div class="label">已通关</div><div class="value">49</div><div class="sub">款游戏完成</div></div>
+      <div class="card"><div class="label">待挑战</div><div class="value amber">13</div><div class="sub">款排队中</div></div>
+      <div class="card"><div class="label">完成率</div><div class="value">78%</div><div class="sub">49 / 63 总收录</div></div>
+      <div class="card"><div class="label">PS 独占</div><div class="value">16</div><div class="sub">占通关 33%</div></div>
     </div>
 
     <!-- Now Playing -->
@@ -257,12 +245,12 @@ body::after{
     <p class="lede">动作冒险一骑绝尘，射击类紧随其后</p>
 
     <div style="margin-top:24px">
-      <div class="genre-row"><div class="g-name">动作冒险</div><div class="g-track"><div class="g-fill" style="width:52%"></div></div><div class="g-count">20</div></div>
-      <div class="genre-row"><div class="g-name">FPS/射击</div><div class="g-track"><div class="g-fill" style="width:21%"></div></div><div class="g-count">6</div></div>
-      <div class="genre-row"><div class="g-name">ARPG</div><div class="g-track"><div class="g-fill" style="width:16%"></div></div><div class="g-count">6</div></div>
-      <div class="genre-row"><div class="g-name">RPG/叙事</div><div class="g-track"><div class="g-fill" style="width:34%"></div></div><div class="g-count">12</div></div>
-      <div class="genre-row"><div class="g-name">平台跳跃</div><div class="g-track"><div class="g-fill" style="width:10%"></div></div><div class="g-count">4</div></div>
-      <div class="genre-row"><div class="g-name">竞速/体育</div><div class="g-track"><div class="g-fill" style="width:3%"></div></div><div class="g-count">1</div></div>
+      <div class="genre-row"><div class="g-name">动作冒险</div><div class="g-track"><div class="g-fill" style="width:100%"></div></div><div class="g-count">20</div></div>
+      <div class="genre-row"><div class="g-name">RPG/叙事</div><div class="g-track"><div class="g-fill" style="width:55%"></div></div><div class="g-count">11</div></div>
+      <div class="genre-row"><div class="g-name">ARPG</div><div class="g-track"><div class="g-fill" style="width:35%"></div></div><div class="g-count">7</div></div>
+      <div class="genre-row"><div class="g-name">FPS/射击</div><div class="g-track"><div class="g-fill" style="width:30%"></div></div><div class="g-count">6</div></div>
+      <div class="genre-row"><div class="g-name">平台跳跃</div><div class="g-track"><div class="g-fill" style="width:20%"></div></div><div class="g-count">4</div></div>
+      <div class="genre-row"><div class="g-name">竞速</div><div class="g-track"><div class="g-fill" style="width:5%"></div></div><div class="g-count">1</div></div>
     </div>
   </section>
 
@@ -275,7 +263,7 @@ body::after{
 
     <div class="insight">
       <span class="icon">🎮</span>
-      <div><div class="title">PS5 原生派</div><div class="text">22 款 PS 独占 / 先发游戏，占通关总数的 46%。从战神到对马岛，从蜘蛛侠到最后生还者——你是索尼生态的忠实玩家。</div></div>
+      <div><div class="title">PS5 原生派</div><div class="text">16 款 PS 独占 / 先发游戏，占通关总数的 33%。从战神到对马岛，从蜘蛛侠到最后生还者——你是索尼生态的忠实玩家。</div></div>
     </div>
     <div class="insight">
       <span class="icon">🔫</span>
@@ -283,11 +271,11 @@ body::after{
     </div>
     <div class="insight">
       <span class="icon">🀄</span>
-      <div><div class="title">东方审美迁移</div><div class="text">黑神话悟空、卧龙、对马岛之魂、师父、只狼……待玩队列还有浪人崛起、真三国无双、羊蹄山之魂。东方武侠/战国题材正成为新主线。</div></div>
+      <div><div class="title">东方审美迁移</div><div class="text">黑神话悟空、卧龙、师父、只狼……待玩队列还有浪人崛起、真三国无双、羊蹄山之魂。东方武侠/战国题材正成为新主线。</div></div>
     </div>
     <div class="insight">
       <span class="icon">🔗</span>
-      <div><div class="title">系列忠诚度极高</div><div class="text">战神 ×3、蜘蛛侠 ×2、最后生还者 ×2、神秘海域 ×2、瑞奇与叮当 ×2——认准一个系列就打通关的习惯，通关率极高。</div></div>
+      <div><div class="title">系列忠诚度极高</div><div class="text">战神 ×2、蜘蛛侠 ×3、最后生还者 ×2、瑞奇与叮当 ×2、星球大战 ×2、使命召唤 ×3——认准一个系列就打通关的习惯，通关率极高。</div></div>
     </div>
   </section>
 
@@ -301,14 +289,19 @@ body::after{
 
     <div class="series-grid">
       <div class="series-card full">
-        <span class="s-title">God of War</span><span class="s-tag" style="color:var(--green)">3/3 ✓</span>
+        <span class="s-title">Spider-Man</span><span class="s-tag" style="color:var(--green)">3/3 ✓</span>
         <div class="s-track" style="border-color:rgba(126,211,164,.3)"><div class="s-fill" style="width:100%;background:var(--green)"></div></div>
-        <div class="s-games">战神3 → 战神(2018) → 诸神黄昏</div>
+        <div class="s-games">漫威蜘蛛侠 → 迈尔斯 → 蜘蛛侠2</div>
       </div>
       <div class="series-card full">
-        <span class="s-title">Spider-Man</span><span class="s-tag" style="color:var(--green)">2/2 ✓</span>
+        <span class="s-title">Call of Duty</span><span class="s-tag" style="color:var(--green)">3/3 ✓</span>
         <div class="s-track" style="border-color:rgba(126,211,164,.3)"><div class="s-fill" style="width:100%;background:var(--green)"></div></div>
-        <div class="s-games">漫威蜘蛛侠 → 迈尔斯</div>
+        <div class="s-games">COD16 → COD17 → COD19</div>
+      </div>
+      <div class="series-card full">
+        <span class="s-title">God of War</span><span class="s-tag" style="color:var(--green)">2/2 ✓</span>
+        <div class="s-track" style="border-color:rgba(126,211,164,.3)"><div class="s-fill" style="width:100%;background:var(--green)"></div></div>
+        <div class="s-games">战神4 → 战神5</div>
       </div>
       <div class="series-card full">
         <span class="s-title">The Last of Us</span><span class="s-tag" style="color:var(--green)">2/2 ✓</span>
@@ -316,9 +309,9 @@ body::after{
         <div class="s-games">最后生还者 → 最后生还者2</div>
       </div>
       <div class="series-card full">
-        <span class="s-title">Uncharted</span><span class="s-tag" style="color:var(--green)">2/2 ✓</span>
+        <span class="s-title">Star Wars Jedi</span><span class="s-tag" style="color:var(--green)">2/2 ✓</span>
         <div class="s-track" style="border-color:rgba(126,211,164,.3)"><div class="s-fill" style="width:100%;background:var(--green)"></div></div>
-        <div class="s-games">神秘海域4 → 失落遗产</div>
+        <div class="s-games">陨落的武士团 → 幸存者</div>
       </div>
       <div class="series-card full">
         <span class="s-title">Ratchet & Clank</span><span class="s-tag" style="color:var(--green)">2/2 ✓</span>
@@ -344,19 +337,19 @@ body::after{
     <h3 class="h3" style="margin-top:28px">动作冒险 · 20</h3>
     <div class="games-grid" id="g-action"></div>
 
+    <h3 class="h3" style="margin-top:28px">动作 RPG / ARPG · 7</h3>
+    <div class="games-grid" id="g-arpg"></div>
+
     <h3 class="h3" style="margin-top:28px">FPS / 射击 · 6</h3>
     <div class="games-grid" id="g-fps"></div>
 
     <h3 class="h3" style="margin-top:28px">平台跳跃 · 4</h3>
     <div class="games-grid" id="g-platformer"></div>
 
-    <h3 class="h3" style="margin-top:28px">动作 RPG / ARPG · 6</h3>
-    <div class="games-grid" id="g-arpg"></div>
-
-    <h3 class="h3" style="margin-top:28px">RPG / 叙事 / 其他 · 12</h3>
+    <h3 class="h3" style="margin-top:28px">RPG / 叙事 / 其他 · 11</h3>
     <div class="games-grid" id="g-other"></div>
 
-    <h3 class="h3" style="margin-top:28px">竞速 / 体育 · 1</h3>
+    <h3 class="h3" style="margin-top:28px">竞速 · 1</h3>
     <div class="games-grid" id="g-racing"></div>
   </section>
 
@@ -365,13 +358,13 @@ body::after{
   <!-- ═══════════════ BACKLOG ═══════════════ -->
   <section class="section">
     <div class="prompt">jq <span class="cmd">'.backlog[] | .name'</span> gaming_profile.json</div>
-    <h2 class="h2">待挑战 · 14 款</h2>
+    <h2 class="h2">待挑战 · 13 款</h2>
     <p class="lede">排队等临幸，迟早会通关</p>
     <div class="backlog-grid" id="backlog-list"></div>
     <div class="cta-card">
       <div class="label">// 最值得期待</div>
       <div class="name">浪人崛起</div>
-      <div class="desc">你通了卧龙、对马岛、只狼——Team Ninja 的战国动作是你的舒适区。浪人崛起是这条线路上最新的一站，开放世界 + 多流派武器切换，值得下一个开。</div>
+      <div class="desc">你通了卧龙、师父、只狼——Team Ninja 的战国动作是你的舒适区。浪人崛起是这条线路上最新的一站，开放世界 + 多流派武器切换，值得下一个开。</div>
     </div>
   </section>
 
@@ -384,39 +377,35 @@ body::after{
 </div>
 
 <script>
-/* ── Game Data ── */
 const games = {
   'g-action': [
-    '战神3','战神(2018)','战神：诸神黄昏','最后生还者','最后生还者2',
-    '神秘海域4','神秘海域：失落遗产','漫威蜘蛛侠','漫威蜘蛛侠：迈尔斯',
-    '对马岛之魂','地平线：零之曙光','地平线：西之绝境',
-    '死亡搁浅','古惑狼4','Returnal','Control',
-    '死亡循环','孤岛惊魂6','原子之心','狙击精英5'
+    '战神4','战神5','神秘海域4','最后生还者','最后生还者2',
+    '漫威蜘蛛侠','蜘蛛侠：迈尔斯','漫威蜘蛛侠2','对马岛之魂','死亡搁浅',
+    '刺客信条：英灵殿','星球大战绝地：陨落的武士团','星球大战绝地：幸存者',
+    '地平线：西之绝境','最后的守护者','凯娜：精神之桥','漫威银河护卫队',
+    '剑星','钢铁之尾','死亡回归'
   ],
+  'g-arpg': ['黑神话：悟空','卧龙：苍天陨落','只狼','死亡岛2','暗黑破坏神4','小缇娜的奇幻之地','师父'],
+  'g-fps': ['使命召唤16：现代战争','使命召唤19：现代战争2','使命召唤17：黑色行动冷战','孤岛惊魂6','狙击精英5','ARC Raiders'],
   'g-platformer': ['瑞奇与叮当','瑞奇与叮当：时空跳跃','宇宙机器人','茶杯头'],
-  'g-arpg': ['黑神话：悟空','卧龙：苍天陨落','只狼','死亡岛2','暗黑破坏神4','小缇娜的奇幻之地'],
-  'g-fps': ['使命召唤：二战','使命召唤：现代战争2','使命召唤：黑色行动6','毁灭战士：永恒','德军总部2','荣誉勋章：above and beyond'],
   'g-other': [
     '最终幻想7重制版','赛博朋克2077','底特律：变人','生化危机3',
-    '师父','双人成行','无间冥寺','死亡回归','装甲核心：境界天火',
-    '小丑牌','美国职业摔角2K24','Stray'
+    '双人成行','无间冥寺','装甲核心：境界天火','渡神纪：芬尼斯崛起',
+    '流浪','原子之心','死亡循环'
   ],
-  'g-racing': ['尘埃2']
+  'g-racing': ['飙酷车神：轰鸣盛典']
 };
 
-/* ── Backlog ── */
 const backlog = [
-  {name:'007：初露锋芒',genre:'动作冒险'},
-  {name:'浪人崛起',genre:'动作冒险'},
-  {name:'龙之信条2',genre:'动作RPG'},{name:'最终幻想16',genre:'RPG'},
-  {name:'天国：拯救2',genre:'RPG'},{name:'真三国无双：起源',genre:'动作'},
-  {name:'羊蹄山之魂',genre:'动作冒险'},{name:'刺客信条：幻景',genre:'动作冒险'},
+  {name:'浪人崛起',genre:'动作冒险'},{name:'刺客信条：幻景',genre:'动作冒险'},
+  {name:'羊蹄山之魂',genre:'动作冒险'},{name:'007：初露锋芒',genre:'动作冒险'},
+  {name:'龙之信条2',genre:'动作RPG'},{name:'真三国无双：起源',genre:'动作'},
+  {name:'最终幻想16',genre:'RPG'},{name:'天国：拯救2',genre:'RPG'},
   {name:'无主之地4',genre:'FPS'},{name:'双影奇镜',genre:'合作冒险'},
   {name:'波斯王子：失落的王冠',genre:'平台跳跃'},{name:'索尼克：未知边境',genre:'平台跳跃'},
   {name:'GT赛车7',genre:'竞速'},
 ];
 
-/* ── Render ── */
 Object.entries(games).forEach(([id, list]) => {
   const el = document.getElementById(id);
   if (el) el.innerHTML = list.map(g => `<div class="game-chip">${g}</div>`).join('');
