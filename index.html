@@ -201,7 +201,7 @@ body::after{
     <div class="chrome"><div class="dots"><span></span><span></span><span></span></div><div>~/gaming · zsh · 118x42</div></div>
     <div class="prompt">whoami <span class="cmd">--gaming</span></div>
     <h1 class="hero-title">GAMING<br>REPORT<span class="cursor"></span></h1>
-    <p class="lede" style="margin-top:14px">49 款已通关 · 13 款待挑战 · 1 款进行中 · 6 个类型全覆盖。<br>从战神到黑神话，从蜘蛛侠到茶杯头——一份完整的游戏品味档案。</p>
+    <p class="lede" style="margin-top:14px">49 款已通关 · 19 款待挑战 · 1 款进行中 · 6 个类型全覆盖。<br>从战神到黑神话，从蜘蛛侠到茶杯头——一份完整的游戏品味档案。</p>
     <div style="margin-top:26px">
       <span class="tag">ps5-native</span>
       <span class="tag">49-done</span>
@@ -219,8 +219,8 @@ body::after{
     <p class="lede">一眼看完所有关键指标</p>
     <div class="kpi-grid">
       <div class="card"><div class="label">已通关</div><div class="value">49</div><div class="sub">款游戏完成</div></div>
-      <div class="card"><div class="label">待挑战</div><div class="value amber">13</div><div class="sub">款排队中</div></div>
-      <div class="card"><div class="label">完成率</div><div class="value">78%</div><div class="sub">49 / 63 总收录</div></div>
+      <div class="card"><div class="label">待挑战</div><div class="value amber">19</div><div class="sub">款排队中</div></div>
+      <div class="card"><div class="label">完成率</div><div class="value">71%</div><div class="sub">49 / 69 总收录</div></div>
       <div class="card"><div class="label">PS 独占</div><div class="value">16</div><div class="sub">占通关 33%</div></div>
     </div>
 
@@ -358,7 +358,7 @@ body::after{
   <!-- ═══════════════ BACKLOG ═══════════════ -->
   <section class="section">
     <div class="prompt">jq <span class="cmd">'.backlog[] | .name'</span> gaming_profile.json</div>
-    <h2 class="h2">待挑战 · 13 款</h2>
+    <h2 class="h2">待挑战 · 19 款</h2>
     <p class="lede">排队等临幸，迟早会通关</p>
     <div class="backlog-grid" id="backlog-list"></div>
     <div class="cta-card">
@@ -371,7 +371,7 @@ body::after{
   <!-- ═══════════════ FOOTER ═══════════════ -->
   <div class="foot">
     <span>gaming_report · 头上有灰机 · 2026</span>
-    <span style="float:right">last_update: 2026-05-18</span>
+    <span style="float:right">last_update: 2026-05-21</span>
   </div>
 
 </div>
@@ -404,6 +404,9 @@ const backlog = [
   {name:'无主之地4',genre:'FPS'},{name:'双影奇镜',genre:'合作冒险'},
   {name:'波斯王子：失落的王冠',genre:'平台跳跃'},{name:'索尼克：未知边境',genre:'平台跳跃'},
   {name:'GT赛车7',genre:'竞速'},
+  {name:'极限竞速：地平线6',genre:'竞速'},{name:'沙罗周期',genre:'RPG'},
+  {name:'影之刃零',genre:'ARPG'},{name:'漫威金刚狼',genre:'动作冒险'},
+  {name:'GTA6',genre:'动作冒险'},{name:'古墓丽影：亚特兰蒂斯遗迹',genre:'动作冒险'},
 ];
 
 Object.entries(games).forEach(([id, list]) => {
