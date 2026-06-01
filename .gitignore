@@ -3,6 +3,7 @@
 .user.ini
 404.html
 50x.html
+.well-known
 
 # OS files
 .DS_Store
