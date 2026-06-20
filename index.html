@@ -181,7 +181,7 @@ body::after{
 .game-chip.platinum .pt-tip{
   position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
   background:rgba(20,22,28,.92);border-radius:2px;
-  font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+  font-size:10px;letter-spacing:.18em;
   color:rgba(200,215,235,.9);opacity:0;transition:opacity .15s;pointer-events:none}
 .game-chip.platinum:hover .pt-tip{opacity:1}
 
@@ -198,16 +198,6 @@ body::after{
 .backlog-chip{font-size:12px;padding:10px 14px;border:1px solid var(--amber-fill);
   border-left:2px solid var(--amber);border-radius:2px;color:var(--ink2);background:transparent}
 .backlog-chip .b-genre{font-size:10px;color:var(--ink3);margin-top:2px}
-
-/* CTA card */
-.cta-card{
-  background:var(--surface);border:1px solid rgba(233,197,138,.2);border-radius:10px;
-  padding:20px 24px;margin-top:20px;position:relative;overflow:hidden}
-.cta-card::before{content:'';position:absolute;top:-1px;left:12px;right:12px;
-  height:2px;background:linear-gradient(90deg,transparent,var(--amber),transparent);opacity:.5}
-.cta-card .label{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink2);margin-bottom:8px}
-.cta-card .name{font-size:20px;font-weight:700;color:var(--green);margin:6px 0}
-.cta-card .desc{font-family:var(--font-sans);font-size:13px;color:var(--ink2);line-height:1.55}
 
 /* Footer */
 .foot{
@@ -228,223 +218,341 @@ body::after{
 <div class="wrap">
 
   <!-- ═══════════════ HERO ═══════════════ -->
-  <section class="section" style="padding-top:80px;padding-bottom:48px">
-    <div class="chrome"><div class="dots"><span></span><span></span><span></span></div><div>~/gaming · zsh · 118x42</div></div>
-    <div class="prompt">whoami <span class="cmd">--gaming</span></div>
-    <h1 class="hero-title">GAMING<br>REPORT<span class="cursor"></span></h1>
-    <p class="lede" style="margin-top:14px">51 款已通关 · 20 款待挑战 · 6 个类型全覆盖。<br>从战神到黑神话，从蜘蛛侠到茶杯头——一份完整的游戏品味档案。</p>
-    <div style="margin-top:26px">
-      <span class="tag">ps5-native</span>
-      <span class="tag">51-done</span>
-      <span class="tag amber">action-adventure</span>
-      <span class="tag red">eastern-shift</span>
-    </div>
-  </section>
-
+  <section class="section" style="padding-top:80px;padding-bottom:48px" id="s-hero"></section>
   <hr>
 
   <!-- ═══════════════ KPI ═══════════════ -->
-  <section class="section">
-    <div class="prompt">jq <span class="cmd">'.stats'</span> gaming_profile.json</div>
-    <h2 class="h2">核心数据</h2>
-    <p class="lede">一眼看完所有关键指标</p>
-    <div class="kpi-grid">
-      <div class="card"><div class="label">已通关</div><div class="value">51</div><div class="sub">款游戏完成</div></div>
-      <div class="card"><div class="label">待挑战</div><div class="value amber">20</div><div class="sub">款排队中</div></div>
-      <div class="card"><div class="label">完成率</div><div class="value">72%</div><div class="sub">51 / 71 总收录</div></div>
-      <div class="card"><div class="label">PS 独占</div><div class="value">17</div><div class="sub">占通关 33%</div></div>
-    </div>
-  </section>
-
+  <section class="section" id="s-kpi"></section>
   <hr>
 
   <!-- ═══════════════ GENRE ═══════════════ -->
-  <section class="section">
-    <div class="prompt">jq <span class="cmd">'[.completed | group_by(.genre) | map({genre: .[0].genre, count: length})] | sort_by(-.count)'</span> gaming_profile.json</div>
-    <h2 class="h2">类型分布</h2>
-    <p class="lede">动作冒险一骑绝尘，射击类紧随其后</p>
-
-    <div style="margin-top:24px">
-      <div class="genre-row"><div class="g-name">动作冒险</div><div class="g-track"><div class="g-fill" style="width:100%"></div></div><div class="g-count">21</div></div>
-      <div class="genre-row"><div class="g-name">RPG/叙事</div><div class="g-track"><div class="g-fill" style="width:55%"></div></div><div class="g-count">11</div></div>
-      <div class="genre-row"><div class="g-name">ARPG</div><div class="g-track"><div class="g-fill" style="width:35%"></div></div><div class="g-count">7</div></div>
-      <div class="genre-row"><div class="g-name">FPS/射击</div><div class="g-track"><div class="g-fill" style="width:30%"></div></div><div class="g-count">6</div></div>
-      <div class="genre-row"><div class="g-name">平台跳跃</div><div class="g-track"><div class="g-fill" style="width:24%"></div></div><div class="g-count">5</div></div>
-      <div class="genre-row"><div class="g-name">竞速</div><div class="g-track"><div class="g-fill" style="width:5%"></div></div><div class="g-count">1</div></div>
-    </div>
-  </section>
-
+  <section class="section" id="s-genre"></section>
   <hr>
 
   <!-- ═══════════════ INSIGHTS ═══════════════ -->
-  <section class="section">
-    <div class="prompt">jq <span class="cmd">'.insights[]'</span> gaming_profile.json</div>
-    <h2 class="h2">数据洞察</h2>
-
-    <div class="insight">
-      <span class="icon">🎮</span>
-      <div><div class="title">PS5 原生派</div><div class="text">17 款 PS 独占 / 先发游戏，占通关总数的 34%。从战神到对马岛，从蜘蛛侠到最后生还者——你是索尼生态的忠实玩家。</div></div>
-    </div>
-    <div class="insight">
-      <span class="icon">🔫</span>
-      <div><div class="title">枪与刀的二元论</div><div class="text">FPS + 动作冒险合计 27 款，占总数一半以上。你的手柄左扳机永远在按——不是在射击就是在格挡。</div></div>
-    </div>
-    <div class="insight">
-      <span class="icon">🀄</span>
-      <div><div class="title">东方审美迁移</div><div class="text">黑神话悟空、卧龙、师父、只狼……待玩队列还有浪人崛起、真三国无双、羊蹄山之魂。东方武侠/战国题材正成为新主线。</div></div>
-    </div>
-    <div class="insight">
-      <span class="icon">🔗</span>
-      <div><div class="title">系列忠诚度极高</div><div class="text">战神 ×2、蜘蛛侠 ×3、最后生还者 ×2、瑞奇与叮当 ×2、星球大战 ×2、使命召唤 ×3、宇宙机器人 ×2——认准一个系列就打通关的习惯，通关率极高。</div></div>
-    </div>
-  </section>
-
+  <section class="section" id="s-insights"></section>
   <hr>
 
   <!-- ═══════════════ SERIES ═══════════════ -->
-  <section class="section">
-    <div class="prompt">jq <span class="cmd">'[.completed | group_by(.series) | map(select(.[0].series != null)) | map({series: .[0].series, count: length, games: map(.name)})]'</span> gaming_profile.json</div>
-    <h2 class="h2">系列制霸</h2>
-    <p class="lede">同一个 IP 不止打通一部</p>
-
-    <div class="series-grid">
-      <div class="series-card full">
-        <span class="s-title">Spider-Man</span><span class="s-tag" style="color:var(--green)">3/3 ✓</span>
-        <div class="s-track" style="border-color:rgba(126,211,164,.3)"><div class="s-fill" style="width:100%;background:var(--green)"></div></div>
-        <div class="s-games">漫威蜘蛛侠 → 迈尔斯 → 蜘蛛侠2</div>
-      </div>
-      <div class="series-card full">
-        <span class="s-title">Call of Duty</span><span class="s-tag" style="color:var(--green)">3/3 ✓</span>
-        <div class="s-track" style="border-color:rgba(126,211,164,.3)"><div class="s-fill" style="width:100%;background:var(--green)"></div></div>
-        <div class="s-games">COD16 → COD17 → COD19</div>
-      </div>
-      <div class="series-card partial">
-        <span class="s-title">God of War</span><span class="s-tag" style="color:var(--amber)">2/3 · 待玩</span>
-        <div class="s-track" style="border-color:rgba(126,211,164,.2)"><div class="s-fill" style="width:66%;background:var(--green)"></div></div>
-        <div class="s-games">战神4 ✓ · 战神5 ✓ · 战神：劳菲 <span style="color:var(--amber)">⏳ 待玩</span></div>
-      </div>
-      <div class="series-card full">
-        <span class="s-title">The Last of Us</span><span class="s-tag" style="color:var(--green)">2/2 ✓</span>
-        <div class="s-track" style="border-color:rgba(126,211,164,.3)"><div class="s-fill" style="width:100%;background:var(--green)"></div></div>
-        <div class="s-games">最后生还者 → 最后生还者2</div>
-      </div>
-      <div class="series-card full">
-        <span class="s-title">Astro Bot</span><span class="s-tag" style="color:var(--green)">2/2 ✓</span>
-        <div class="s-track" style="border-color:rgba(126,211,164,.3)"><div class="s-fill" style="width:100%;background:var(--green)"></div></div>
-        <div class="s-games">宇宙机器人无线控制器使用指南 ✓ · 宇宙机器人 ✓</div>
-      </div>
-      <div class="series-card full">
-        <span class="s-title">Star Wars Jedi</span><span class="s-tag" style="color:var(--green)">2/2 ✓</span>
-        <div class="s-track" style="border-color:rgba(126,211,164,.3)"><div class="s-fill" style="width:100%;background:var(--green)"></div></div>
-        <div class="s-games">陨落的武士团 → 幸存者</div>
-      </div>
-      <div class="series-card full">
-        <span class="s-title">Ratchet & Clank</span><span class="s-tag" style="color:var(--green)">2/2 ✓</span>
-        <div class="s-track" style="border-color:rgba(126,211,164,.3)"><div class="s-fill" style="width:100%;background:var(--green)"></div></div>
-        <div class="s-games">瑞奇与叮当 → 时空跳跃</div>
-      </div>
-      <div class="series-card full">
-        <span class="s-title">Death Stranding</span><span class="s-tag" style="color:var(--green)">2/2 ✓</span>
-        <div class="s-track" style="border-color:rgba(126,211,164,.3)"><div class="s-fill" style="width:100%;background:var(--green)"></div></div>
-        <div class="s-games">死亡搁浅 ✓ · 死亡搁浅2 ✓</div>
-      </div>
-    </div>
-  </section>
-
+  <section class="section" id="s-series"></section>
   <hr>
 
   <!-- ═══════════════ COMPLETED ═══════════════ -->
-  <section class="section">
-    <div class="prompt">jq <span class="cmd">'.completed[] | .name'</span> gaming_profile.json</div>
-    <h2 class="h2">已通关 · 51 款 <span class="pt-legend"><span class="pt-legend-icon">✧ 白金奖杯</span> 全奖杯达成</span></h2>
-    <p class="lede">每一款都是真金白银+时间的投入</p>
-
-    <h3 class="h3" style="margin-top:28px">动作冒险 · 21</h3>
-    <div class="games-grid" id="g-action"></div>
-
-    <h3 class="h3" style="margin-top:28px">动作 RPG / ARPG · 7</h3>
-    <div class="games-grid" id="g-arpg"></div>
-
-    <h3 class="h3" style="margin-top:28px">FPS / 射击 · 6</h3>
-    <div class="games-grid" id="g-fps"></div>
-
-    <h3 class="h3" style="margin-top:28px">平台跳跃 · 5</h3>
-    <div class="games-grid" id="g-platformer"></div>
-
-    <h3 class="h3" style="margin-top:28px">RPG / 叙事 / 其他 · 11</h3>
-    <div class="games-grid" id="g-other"></div>
-
-    <h3 class="h3" style="margin-top:28px">竞速 · 1</h3>
-    <div class="games-grid" id="g-racing"></div>
-  </section>
-
+  <section class="section" id="s-completed"></section>
   <hr>
 
   <!-- ═══════════════ BACKLOG ═══════════════ -->
-  <section class="section">
-    <div class="prompt">jq <span class="cmd">'.backlog[] | .name'</span> gaming_profile.json</div>
-    <h2 class="h2">待挑战 · 20 款</h2>
-    <p class="lede">排队等临幸，迟早会通关</p>
-    <div class="backlog-grid" id="backlog-list"></div>
-  </section>
+  <section class="section" id="s-backlog"></section>
 
   <!-- ═══════════════ FOOTER ═══════════════ -->
-  <div class="foot">
-    <span>gaming_report · 头上有灰机 · 2026</span>
-    <span style="float:right">last_update: 2026-06-20</span>
-  </div>
+  <div class="foot" id="s-footer"></div>
 
 </div>
 
 <script>
-const games = {
-  'g-action': [
-    '战神4','战神5','神秘海域4','最后生还者','最后生还者2',
-    '漫威蜘蛛侠','蜘蛛侠：迈尔斯','漫威蜘蛛侠2','对马岛之魂','死亡搁浅',
-    '死亡搁浅2',
-    '刺客信条：英灵殿','星球大战绝地：陨落的武士团','星球大战绝地：幸存者',
-    '地平线：西之绝境','最后的守护者','凯娜：精神之桥','漫威银河护卫队',
-    '剑星','钢铁之尾','死亡回归'
-  ],
-  'g-arpg': ['黑神话：悟空','卧龙：苍天陨落','只狼','死亡岛2','暗黑破坏神4','小缇娜的奇幻之地','师父'],
-  'g-fps': ['使命召唤16：现代战争','使命召唤19：现代战争2','使命召唤17：黑色行动冷战','孤岛惊魂6','狙击精英5','ARC Raiders'],
-  'g-platformer': ['宇宙机器人无线控制器使用指南','宇宙机器人','瑞奇与叮当','瑞奇与叮当：时空跳跃','茶杯头'],
-  'g-other': [
-    '最终幻想7重制版','赛博朋克2077','底特律：变人','生化危机3',
-    '双人成行','无间冥寺','装甲核心：境界天火','渡神纪：芬尼斯崛起',
-    '流浪','原子之心','死亡循环'
-  ],
-  'g-racing': ['飙酷车神：轰鸣盛典']
-};
+// ════════════════════════════════════════════════════════
+//  数据源 — 只需修改这里，页面所有区域自动更新
+// ════════════════════════════════════════════════════════
 
-const backlog = [
-  {name:'浪人崛起',genre:'动作冒险'},{name:'刺客信条：幻景',genre:'动作冒险'},
-  {name:'羊蹄山之魂',genre:'动作冒险'},{name:'007：初露锋芒',genre:'动作冒险'},
-  {name:'龙之信条2',genre:'动作RPG'},{name:'真三国无双：起源',genre:'动作'},
-  {name:'最终幻想16',genre:'RPG'},{name:'天国：拯救2',genre:'RPG'},
-  {name:'无主之地4',genre:'FPS'},{name:'双影奇镜',genre:'合作冒险'},
-  {name:'波斯王子：失落的王冠',genre:'平台跳跃'},{name:'索尼克：未知边境',genre:'平台跳跃'},
-  {name:'GT赛车7',genre:'竞速'},
-  {name:'极限竞速：地平线6',genre:'竞速'},{name:'沙罗周期',genre:'射击/动作冒险'},
-  {name:'影之刃零',genre:'ARPG'},{name:'战神：劳菲',genre:'动作冒险'},{name:'漫威金刚狼',genre:'动作冒险'},
-  {name:'GTA6',genre:'动作冒险'},{name:'古墓丽影：亚特兰蒂斯遗迹',genre:'动作冒险'},
+const COMPLETED = [
+  // 动作冒险
+  {name:'战神4',genre:'动作冒险',series:'God of War',platinum:true,ps:true},
+  {name:'战神5',genre:'动作冒险',series:'God of War',platinum:true,ps:true},
+  {name:'神秘海域4',genre:'动作冒险',ps:true},
+  {name:'最后生还者',genre:'动作冒险',series:'The Last of Us',ps:true},
+  {name:'最后生还者2',genre:'动作冒险',series:'The Last of Us',ps:true},
+  {name:'漫威蜘蛛侠',genre:'动作冒险',series:'Spider-Man',ps:true},
+  {name:'蜘蛛侠：迈尔斯',genre:'动作冒险',series:'Spider-Man',ps:true},
+  {name:'漫威蜘蛛侠2',genre:'动作冒险',series:'Spider-Man',ps:true},
+  {name:'对马岛之魂',genre:'动作冒险',ps:true},
+  {name:'死亡搁浅',genre:'动作冒险',series:'Death Stranding',ps:true},
+  {name:'死亡搁浅2',genre:'动作冒险',series:'Death Stranding',platinum:true,ps:true},
+  {name:'刺客信条：英灵殿',genre:'动作冒险'},
+  {name:'星球大战绝地：陨落的武士团',genre:'动作冒险',series:'Star Wars Jedi'},
+  {name:'星球大战绝地：幸存者',genre:'动作冒险',series:'Star Wars Jedi'},
+  {name:'地平线：西之绝境',genre:'动作冒险',ps:true},
+  {name:'最后的守护者',genre:'动作冒险',ps:true},
+  {name:'凯娜：精神之桥',genre:'动作冒险'},
+  {name:'漫威银河护卫队',genre:'动作冒险'},
+  {name:'剑星',genre:'动作冒险'},
+  {name:'钢铁之尾',genre:'动作冒险'},
+  {name:'死亡回归',genre:'动作冒险',ps:true},
+  // ARPG
+  {name:'黑神话：悟空',genre:'ARPG'},
+  {name:'卧龙：苍天陨落',genre:'ARPG'},
+  {name:'只狼',genre:'ARPG'},
+  {name:'死亡岛2',genre:'ARPG'},
+  {name:'暗黑破坏神4',genre:'ARPG'},
+  {name:'小缇娜的奇幻之地',genre:'ARPG'},
+  {name:'师父',genre:'ARPG'},
+  // FPS/射击
+  {name:'使命召唤16：现代战争',genre:'FPS/射击',series:'Call of Duty'},
+  {name:'使命召唤19：现代战争2',genre:'FPS/射击',series:'Call of Duty'},
+  {name:'使命召唤17：黑色行动冷战',genre:'FPS/射击',series:'Call of Duty'},
+  {name:'孤岛惊魂6',genre:'FPS/射击'},
+  {name:'狙击精英5',genre:'FPS/射击'},
+  {name:'ARC Raiders',genre:'FPS/射击'},
+  // 平台跳跃
+  {name:'宇宙机器人无线控制器使用指南',genre:'平台跳跃',series:'Astro Bot',platinum:true,ps:true},
+  {name:'宇宙机器人',genre:'平台跳跃',series:'Astro Bot',platinum:true,ps:true},
+  {name:'瑞奇与叮当',genre:'平台跳跃',series:'Ratchet & Clank',ps:true},
+  {name:'瑞奇与叮当：时空跳跃',genre:'平台跳跃',series:'Ratchet & Clank',ps:true},
+  {name:'茶杯头',genre:'平台跳跃'},
+  // RPG/叙事
+  {name:'最终幻想7重制版',genre:'RPG/叙事'},
+  {name:'赛博朋克2077',genre:'RPG/叙事'},
+  {name:'底特律：变人',genre:'RPG/叙事'},
+  {name:'生化危机3',genre:'RPG/叙事'},
+  {name:'双人成行',genre:'RPG/叙事'},
+  {name:'无间冥寺',genre:'RPG/叙事'},
+  {name:'装甲核心：境界天火',genre:'RPG/叙事'},
+  {name:'渡神纪：芬尼斯崛起',genre:'RPG/叙事'},
+  {name:'流浪',genre:'RPG/叙事'},
+  {name:'原子之心',genre:'RPG/叙事'},
+  {name:'死亡循环',genre:'RPG/叙事'},
+  // 竞速
+  {name:'飙酷车神：轰鸣盛典',genre:'竞速'},
 ];
 
-const platinum = new Set(['战神4','战神5','宇宙机器人无线控制器使用指南','宇宙机器人','死亡搁浅2']);
+const BACKLOG = [
+  {name:'浪人崛起',genre:'动作冒险'},
+  {name:'刺客信条：幻景',genre:'动作冒险'},
+  {name:'羊蹄山之魂',genre:'动作冒险'},
+  {name:'007：初露锋芒',genre:'动作冒险'},
+  {name:'龙之信条2',genre:'ARPG'},
+  {name:'真三国无双：起源',genre:'ARPG'},
+  {name:'最终幻想16',genre:'RPG/叙事'},
+  {name:'天国：拯救2',genre:'RPG/叙事'},
+  {name:'无主之地4',genre:'FPS/射击'},
+  {name:'双影奇镜',genre:'RPG/叙事'},
+  {name:'波斯王子：失落的王冠',genre:'平台跳跃'},
+  {name:'索尼克：未知边境',genre:'平台跳跃'},
+  {name:'GT赛车7',genre:'竞速'},
+  {name:'极限竞速：地平线6',genre:'竞速'},
+  {name:'沙罗周期',genre:'FPS/射击'},
+  {name:'影之刃零',genre:'ARPG'},
+  {name:'战神：劳菲',genre:'动作冒险',series:'God of War'},
+  {name:'漫威金刚狼',genre:'动作冒险'},
+  {name:'GTA6',genre:'动作冒险'},
+  {name:'古墓丽影：亚特兰蒂斯遗迹',genre:'动作冒险'},
+];
 
-Object.entries(games).forEach(([id, list]) => {
-  const el = document.getElementById(id);
-  if (el) el.innerHTML = list.map(g => {
-    if (platinum.has(g)) {
-      return `<div class="game-chip platinum" title="白金奖杯">${g}<span class="pt-tip">✧ 白金奖杯</span></div>`;
-    }
-    return `<div class="game-chip">${g}</div>`;
-  }).join('');
+// 正在玩（null = 无）
+const NOW_PLAYING = null;
+// 示例: {name:'某某游戏',genre:'动作冒险',dev:'工作室',platform:'PS5'}
+
+// 下一个推荐开（null = 不显示卡片）
+const NEXT_PICK = null;
+
+// 系列定义（顺序即卡片顺序，games 为全部已知作品）
+const SERIES = [
+  {name:'Spider-Man',games:['漫威蜘蛛侠','蜘蛛侠：迈尔斯','漫威蜘蛛侠2']},
+  {name:'Call of Duty',games:['使命召唤16：现代战争','使命召唤17：黑色行动冷战','使命召唤19：现代战争2']},
+  {name:'God of War',games:['战神4','战神5','战神：劳菲']},
+  {name:'The Last of Us',games:['最后生还者','最后生还者2']},
+  {name:'Astro Bot',games:['宇宙机器人无线控制器使用指南','宇宙机器人']},
+  {name:'Star Wars Jedi',games:['星球大战绝地：陨落的武士团','星球大战绝地：幸存者']},
+  {name:'Ratchet & Clank',games:['瑞奇与叮当','瑞奇与叮当：时空跳跃']},
+  {name:'Death Stranding',games:['死亡搁浅','死亡搁浅2']},
+];
+
+// 类型配置（顺序即显示顺序）
+const GENRES = [
+  {key:'动作冒险',label:'动作冒险'},
+  {key:'ARPG',label:'动作 RPG / ARPG'},
+  {key:'FPS/射击',label:'FPS / 射击'},
+  {key:'平台跳跃',label:'平台跳跃'},
+  {key:'RPG/叙事',label:'RPG / 叙事 / 其他'},
+  {key:'竞速',label:'竞速'},
+];
+
+// 更新日期
+const UPDATED_AT = '2026-06-20';
+
+
+// ════════════════════════════════════════════════════════
+//  计算层 — 所有数字从这里派生，不再有任何硬编码
+// ════════════════════════════════════════════════════════
+
+const doneSet = new Set(COMPLETED.map(g => g.name));
+const backlogSet = new Set(BACKLOG.map(g => g.name));
+const platinumSet = new Set(COMPLETED.filter(g => g.platinum).map(g => g.name));
+
+const S = {
+  total: COMPLETED.length + BACKLOG.length,
+  done: COMPLETED.length,
+  backlog: BACKLOG.length,
+  ps: COMPLETED.filter(g => g.ps).length,
+  platinum: platinumSet.size,
+};
+S.donePct = Math.round(S.done / S.total * 100);
+S.psPct = Math.round(S.ps / S.done * 100);
+
+// 按类型统计
+const genreStats = GENRES.map(cfg => {
+  const count = COMPLETED.filter(g => g.genre === cfg.key).length;
+  return {...cfg, count};
+});
+const genreMax = Math.max(...genreStats.map(g => g.count), 1);
+
+// 按系列统计
+const seriesStats = SERIES.map(s => {
+  const done = s.games.filter(n => doneSet.has(n)).length;
+  const pending = s.games.filter(n => backlogSet.has(n));
+  return {...s, done, total: s.games.length, pending, isFull: done === s.games.length};
 });
 
-document.getElementById('backlog-list').innerHTML = backlog.map(b =>
-  `<div class="backlog-chip"><div>${b.name}</div><div class="b-genre">${b.genre}</div></div>`
-).join('');
+// 多部系列（用于洞察）
+const multiSeries = seriesStats.filter(s => s.done > 1);
+
+
+// ════════════════════════════════════════════════════════
+//  渲染层
+// ════════════════════════════════════════════════════════
+
+function $(id) { return document.getElementById(id); }
+
+// ── Hero ──
+$('s-hero').innerHTML = `
+  <div class="chrome"><div class="dots"><span></span><span></span><span></span></div><div>~/gaming · zsh · 118x42</div></div>
+  <div class="prompt">whoami <span class="cmd">--gaming</span></div>
+  <h1 class="hero-title">GAMING<br>REPORT<span class="cursor"></span></h1>
+  <p class="lede" style="margin-top:14px">${S.done} 款已通关 · ${S.backlog} 款待挑战${NOW_PLAYING ? ' · 1 款进行中' : ''} · ${GENRES.length} 个类型全覆盖。<br>从战神到黑神话，从蜘蛛侠到茶杯头——一份完整的游戏品味档案。</p>
+  <div style="margin-top:26px">
+    <span class="tag">ps5-native</span>
+    <span class="tag">${S.done}-done</span>
+    <span class="tag amber">action-adventure</span>
+    <span class="tag red">eastern-shift</span>
+  </div>`;
+
+// ── KPI + Now Playing ──
+let kpi = `
+  <div class="prompt">jq <span class="cmd">'.stats'</span> gaming_profile.json</div>
+  <h2 class="h2">核心数据</h2>
+  <p class="lede">一眼看完所有关键指标</p>
+  <div class="kpi-grid">
+    <div class="card"><div class="label">已通关</div><div class="value">${S.done}</div><div class="sub">款游戏完成</div></div>
+    <div class="card"><div class="label">待挑战</div><div class="value amber">${S.backlog}</div><div class="sub">款排队中</div></div>
+    <div class="card"><div class="label">完成率</div><div class="value">${S.donePct}%</div><div class="sub">${S.done} / ${S.total} 总收录</div></div>
+    <div class="card"><div class="label">PS 独占</div><div class="value">${S.ps}</div><div class="sub">占通关 ${S.psPct}%</div></div>
+  </div>`;
+
+if (NOW_PLAYING) {
+  kpi += `
+  <div class="now-playing">
+    <div class="np-label">now playing</div>
+    <div class="np-title">${NOW_PLAYING.name}</div>
+    <div class="np-meta">${NOW_PLAYING.genre} · <span>${NOW_PLAYING.dev}</span> · ${NOW_PLAYING.platform} · 进行中</div>
+    <div style="margin-top:10px"><span class="tag">playing</span></div>
+  </div>`;
+}
+$('s-kpi').innerHTML = kpi;
+
+// ── Genre ──
+$('s-genre').innerHTML = `
+  <div class="prompt">jq <span class="cmd">'[.completed | group_by(.genre) | map({genre: .[0].genre, count: length})] | sort_by(-.count)'</span> gaming_profile.json</div>
+  <h2 class="h2">类型分布</h2>
+  <p class="lede">动作冒险一骑绝尘，射击类紧随其后</p>
+  <div style="margin-top:24px">
+    ${genreStats.map(g => `
+    <div class="genre-row">
+      <div class="g-name">${g.label}</div>
+      <div class="g-track"><div class="g-fill" style="width:${Math.round(g.count / genreMax * 100)}%"></div></div>
+      <div class="g-count">${g.count}</div>
+    </div>`).join('')}
+  </div>`;
+
+// ── Insights ──
+const fpsAction = COMPLETED.filter(g => g.genre === 'FPS/射击' || g.genre === '动作冒险').length;
+const insights = [
+  {icon:'🎮', title:'PS5 原生派', text:`${S.ps} 款 PS 独占 / 先发游戏，占通关总数的 ${S.psPct}%。从战神到对马岛，从蜘蛛侠到最后生还者——你是索尼生态的忠实玩家。`},
+  {icon:'🔫', title:'枪与刀的二元论', text:`FPS + 动作冒险合计 ${fpsAction} 款，占总数一半以上。你的手柄左扳机永远在按——不是在射击就是在格挡。`},
+  {icon:'🀄', title:'东方审美迁移', text:'黑神话悟空、卧龙、师父、只狼……待玩队列还有浪人崛起、真三国无双、羊蹄山之魂。东方武侠/战国题材正成为新主线。'},
+  {icon:'🔗', title:'系列忠诚度极高', text:`${multiSeries.map(s => `${s.name} ×${s.done}`).join('、')}——认准一个系列就打通关的习惯，通关率极高。`},
+];
+
+$('s-insights').innerHTML = `
+  <div class="prompt">jq <span class="cmd">'.insights[]'</span> gaming_profile.json</div>
+  <h2 class="h2">数据洞察</h2>
+  ${insights.map(i => `
+  <div class="insight">
+    <span class="icon">${i.icon}</span>
+    <div><div class="title">${i.title}</div><div class="text">${i.text}</div></div>
+  </div>`).join('')}`;
+
+// ── Series ──
+$('s-series').innerHTML = `
+  <div class="prompt">jq <span class="cmd">'[.completed | group_by(.series) | map(select(.[0].series != null)) | map({series: .[0].series, count: length, games: map(.name)})]'</span> gaming_profile.json</div>
+  <h2 class="h2">系列制霸</h2>
+  <p class="lede">同一个 IP 不止打通一部</p>
+  <div class="series-grid">
+    ${seriesStats.map(s => {
+      const pct = Math.round(s.done / s.total * 100);
+      const cls = s.isFull ? 'series-card full' : 'series-card';
+      const tagColor = s.isFull ? 'var(--green)' : 'var(--amber)';
+      const tagText = s.isFull ? `${s.done}/${s.total} ✓` : `${s.done}/${s.total} · 待玩`;
+      const borderStyle = s.isFull ? 'border-color:rgba(126,211,164,.3)' : 'border-color:rgba(126,211,164,.2)';
+      const gamesHtml = s.games.map(n => {
+        if (doneSet.has(n)) return `${n} ✓`;
+        if (backlogSet.has(n)) return `${n} <span style="color:var(--amber)">⏳ 待玩</span>`;
+        return `${n}`;
+      }).join(' · ');
+      return `
+    <div class="${cls}">
+      <span class="s-title">${s.name}</span><span class="s-tag" style="color:${tagColor}">${tagText}</span>
+      <div class="s-track" style="${borderStyle}"><div class="s-fill" style="width:${pct}%;background:var(--green)"></div></div>
+      <div class="s-games">${gamesHtml}</div>
+    </div>`;
+    }).join('')}
+  </div>`;
+
+// ── Completed ──
+const ptLegend = S.platinum > 0
+  ? ` <span class="pt-legend"><span class="pt-legend-icon">✧ 白金奖杯</span> 全奖杯达成</span>`
+  : '';
+let doneHtml = `
+  <div class="prompt">jq <span class="cmd">'.completed[] | .name'</span> gaming_profile.json</div>
+  <h2 class="h2">已通关 · ${S.done} 款${ptLegend}</h2>
+  <p class="lede">每一款都是真金白银+时间的投入</p>`;
+
+GENRES.forEach(cfg => {
+  const games = COMPLETED.filter(g => g.genre === cfg.key);
+  if (games.length === 0) return;
+  doneHtml += `
+  <h3 class="h3" style="margin-top:28px">${cfg.label} · ${games.length}</h3>
+  <div class="games-grid">${games.map(g => {
+    if (platinumSet.has(g.name)) {
+      return `<div class="game-chip platinum" title="白金奖杯">${g.name}<span class="pt-tip">✧ 白金奖杯</span></div>`;
+    }
+    return `<div class="game-chip">${g.name}</div>`;
+  }).join('')}</div>`;
+});
+$('s-completed').innerHTML = doneHtml;
+
+// ── Backlog ──
+let backlogHtml = `
+  <div class="prompt">jq <span class="cmd">'.backlog[] | .name'</span> gaming_profile.json</div>
+  <h2 class="h2">待挑战 · ${S.backlog} 款</h2>
+  <p class="lede">排队等临幸，迟早会通关</p>
+  <div class="backlog-grid">${BACKLOG.map(b =>
+    `<div class="backlog-chip"><div>${b.name}</div><div class="b-genre">${b.genre}</div></div>`
+  ).join('')}</div>`;
+
+if (NEXT_PICK) {
+  backlogHtml += `
+  <div class="cta-card">
+    <div class="label">// 最值得期待</div>
+    <div class="name">${NEXT_PICK.name}</div>
+    <div class="desc">${NEXT_PICK.desc}</div>
+  </div>`;
+}
+$('s-backlog').innerHTML = backlogHtml;
+
+// ── Footer ──
+$('s-footer').innerHTML = `
+  <span>gaming_report · 头上有灰机 · ${new Date().getFullYear()}</span>
+  <span style="float:right">last_update: ${UPDATED_AT}</span>`;
+
 </script>
 </body>
 </html>
