@@ -162,6 +162,37 @@ body::after{
   color:var(--ink);background:transparent;transition:border-color .15s}
 .game-chip:hover{border-color:var(--green)}
 
+/* Platinum */
+.game-chip.platinum{
+  border:1px solid rgba(180,200,220,.45);
+  background:linear-gradient(135deg,rgba(180,200,220,.08) 0%,rgba(255,255,255,.06) 50%,rgba(180,200,220,.08) 100%);
+  color:#e8eef4;
+  position:relative;overflow:hidden}
+.game-chip.platinum::before{
+  content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);
+  animation:platinumSweep 3s ease-in-out infinite}
+@keyframes platinumSweep{0%{left:-100%}40%,100%{left:140%}}
+.game-chip.platinum::after{
+  content:'✧';position:absolute;right:6px;top:50%;transform:translateY(-50%);
+  font-size:10px;color:rgba(200,215,235,.7);
+  text-shadow:0 0 6px rgba(180,200,220,.5)}
+.game-chip.platinum:hover{border-color:rgba(200,215,235,.7)}
+.game-chip.platinum .pt-tip{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  background:rgba(20,22,28,.92);border-radius:2px;
+  font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(200,215,235,.9);opacity:0;transition:opacity .15s;pointer-events:none}
+.game-chip.platinum:hover .pt-tip{opacity:1}
+
+/* Platinum legend */
+.pt-legend{display:inline-flex;align-items:center;gap:6px;margin-left:12px;
+  font-size:11px;color:var(--ink3);vertical-align:middle}
+.pt-legend-icon{display:inline-flex;align-items:center;gap:3px;
+  padding:2px 8px;border:1px solid rgba(180,200,220,.35);border-radius:2px;
+  background:linear-gradient(135deg,rgba(180,200,220,.08),rgba(255,255,255,.04));
+  color:rgba(200,215,235,.8);font-size:10px}
+
 /* Backlog */
 .backlog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:6px;margin-top:12px}
 .backlog-chip{font-size:12px;padding:10px 14px;border:1px solid var(--amber-fill);
@@ -201,10 +232,10 @@ body::after{
     <div class="chrome"><div class="dots"><span></span><span></span><span></span></div><div>~/gaming · zsh · 118x42</div></div>
     <div class="prompt">whoami <span class="cmd">--gaming</span></div>
     <h1 class="hero-title">GAMING<br>REPORT<span class="cursor"></span></h1>
-    <p class="lede" style="margin-top:14px">49 款已通关 · 19 款待挑战 · 1 款进行中 · 6 个类型全覆盖。<br>从战神到黑神话，从蜘蛛侠到茶杯头——一份完整的游戏品味档案。</p>
+    <p class="lede" style="margin-top:14px">51 款已通关 · 20 款待挑战 · 6 个类型全覆盖。<br>从战神到黑神话，从蜘蛛侠到茶杯头——一份完整的游戏品味档案。</p>
     <div style="margin-top:26px">
       <span class="tag">ps5-native</span>
-      <span class="tag">49-done</span>
+      <span class="tag">51-done</span>
       <span class="tag amber">action-adventure</span>
       <span class="tag red">eastern-shift</span>
     </div>
@@ -218,21 +249,10 @@ body::after{
     <h2 class="h2">核心数据</h2>
     <p class="lede">一眼看完所有关键指标</p>
     <div class="kpi-grid">
-      <div class="card"><div class="label">已通关</div><div class="value">49</div><div class="sub">款游戏完成</div></div>
-      <div class="card"><div class="label">待挑战</div><div class="value amber">19</div><div class="sub">款排队中</div></div>
-      <div class="card"><div class="label">完成率</div><div class="value">71%</div><div class="sub">49 / 69 总收录</div></div>
-      <div class="card"><div class="label">PS 独占</div><div class="value">16</div><div class="sub">占通关 33%</div></div>
-    </div>
-
-    <!-- Now Playing -->
-    <div class="now-playing">
-      <div class="np-label">now playing</div>
-      <div class="np-title">死亡搁浅2</div>
-      <div class="np-meta">动作冒险 · <span>Kojima Productions</span> · PS5 · 进行中</div>
-      <div style="margin-top:10px">
-        <span class="tag">playing</span>
-        <span class="tag amber">death-stranding</span>
-      </div>
+      <div class="card"><div class="label">已通关</div><div class="value">51</div><div class="sub">款游戏完成</div></div>
+      <div class="card"><div class="label">待挑战</div><div class="value amber">20</div><div class="sub">款排队中</div></div>
+      <div class="card"><div class="label">完成率</div><div class="value">72%</div><div class="sub">51 / 71 总收录</div></div>
+      <div class="card"><div class="label">PS 独占</div><div class="value">17</div><div class="sub">占通关 33%</div></div>
     </div>
   </section>
 
@@ -245,11 +265,11 @@ body::after{
     <p class="lede">动作冒险一骑绝尘，射击类紧随其后</p>
 
     <div style="margin-top:24px">
-      <div class="genre-row"><div class="g-name">动作冒险</div><div class="g-track"><div class="g-fill" style="width:100%"></div></div><div class="g-count">20</div></div>
+      <div class="genre-row"><div class="g-name">动作冒险</div><div class="g-track"><div class="g-fill" style="width:100%"></div></div><div class="g-count">21</div></div>
       <div class="genre-row"><div class="g-name">RPG/叙事</div><div class="g-track"><div class="g-fill" style="width:55%"></div></div><div class="g-count">11</div></div>
       <div class="genre-row"><div class="g-name">ARPG</div><div class="g-track"><div class="g-fill" style="width:35%"></div></div><div class="g-count">7</div></div>
       <div class="genre-row"><div class="g-name">FPS/射击</div><div class="g-track"><div class="g-fill" style="width:30%"></div></div><div class="g-count">6</div></div>
-      <div class="genre-row"><div class="g-name">平台跳跃</div><div class="g-track"><div class="g-fill" style="width:20%"></div></div><div class="g-count">4</div></div>
+      <div class="genre-row"><div class="g-name">平台跳跃</div><div class="g-track"><div class="g-fill" style="width:24%"></div></div><div class="g-count">5</div></div>
       <div class="genre-row"><div class="g-name">竞速</div><div class="g-track"><div class="g-fill" style="width:5%"></div></div><div class="g-count">1</div></div>
     </div>
   </section>
@@ -263,11 +283,11 @@ body::after{
 
     <div class="insight">
       <span class="icon">🎮</span>
-      <div><div class="title">PS5 原生派</div><div class="text">16 款 PS 独占 / 先发游戏，占通关总数的 33%。从战神到对马岛，从蜘蛛侠到最后生还者——你是索尼生态的忠实玩家。</div></div>
+      <div><div class="title">PS5 原生派</div><div class="text">17 款 PS 独占 / 先发游戏，占通关总数的 34%。从战神到对马岛，从蜘蛛侠到最后生还者——你是索尼生态的忠实玩家。</div></div>
     </div>
     <div class="insight">
       <span class="icon">🔫</span>
-      <div><div class="title">枪与刀的二元论</div><div class="text">FPS + 动作冒险合计 26 款，占总数一半以上。你的手柄左扳机永远在按——不是在射击就是在格挡。</div></div>
+      <div><div class="title">枪与刀的二元论</div><div class="text">FPS + 动作冒险合计 27 款，占总数一半以上。你的手柄左扳机永远在按——不是在射击就是在格挡。</div></div>
     </div>
     <div class="insight">
       <span class="icon">🀄</span>
@@ -275,7 +295,7 @@ body::after{
     </div>
     <div class="insight">
       <span class="icon">🔗</span>
-      <div><div class="title">系列忠诚度极高</div><div class="text">战神 ×2、蜘蛛侠 ×3、最后生还者 ×2、瑞奇与叮当 ×2、星球大战 ×2、使命召唤 ×3——认准一个系列就打通关的习惯，通关率极高。</div></div>
+      <div><div class="title">系列忠诚度极高</div><div class="text">战神 ×2、蜘蛛侠 ×3、最后生还者 ×2、瑞奇与叮当 ×2、星球大战 ×2、使命召唤 ×3、宇宙机器人 ×2——认准一个系列就打通关的习惯，通关率极高。</div></div>
     </div>
   </section>
 
@@ -298,15 +318,20 @@ body::after{
         <div class="s-track" style="border-color:rgba(126,211,164,.3)"><div class="s-fill" style="width:100%;background:var(--green)"></div></div>
         <div class="s-games">COD16 → COD17 → COD19</div>
       </div>
-      <div class="series-card full">
-        <span class="s-title">God of War</span><span class="s-tag" style="color:var(--green)">2/2 ✓</span>
-        <div class="s-track" style="border-color:rgba(126,211,164,.3)"><div class="s-fill" style="width:100%;background:var(--green)"></div></div>
-        <div class="s-games">战神4 → 战神5</div>
+      <div class="series-card partial">
+        <span class="s-title">God of War</span><span class="s-tag" style="color:var(--amber)">2/3 · 待玩</span>
+        <div class="s-track" style="border-color:rgba(126,211,164,.2)"><div class="s-fill" style="width:66%;background:var(--green)"></div></div>
+        <div class="s-games">战神4 ✓ · 战神5 ✓ · 战神：劳菲 <span style="color:var(--amber)">⏳ 待玩</span></div>
       </div>
       <div class="series-card full">
         <span class="s-title">The Last of Us</span><span class="s-tag" style="color:var(--green)">2/2 ✓</span>
         <div class="s-track" style="border-color:rgba(126,211,164,.3)"><div class="s-fill" style="width:100%;background:var(--green)"></div></div>
         <div class="s-games">最后生还者 → 最后生还者2</div>
+      </div>
+      <div class="series-card full">
+        <span class="s-title">Astro Bot</span><span class="s-tag" style="color:var(--green)">2/2 ✓</span>
+        <div class="s-track" style="border-color:rgba(126,211,164,.3)"><div class="s-fill" style="width:100%;background:var(--green)"></div></div>
+        <div class="s-games">宇宙机器人无线控制器使用指南 ✓ · 宇宙机器人 ✓</div>
       </div>
       <div class="series-card full">
         <span class="s-title">Star Wars Jedi</span><span class="s-tag" style="color:var(--green)">2/2 ✓</span>
@@ -318,10 +343,10 @@ body::after{
         <div class="s-track" style="border-color:rgba(126,211,164,.3)"><div class="s-fill" style="width:100%;background:var(--green)"></div></div>
         <div class="s-games">瑞奇与叮当 → 时空跳跃</div>
       </div>
-      <div class="series-card partial">
-        <span class="s-title">Death Stranding</span><span class="s-tag" style="color:var(--green)">1/2 · 进行中</span>
-        <div class="s-track" style="border-color:rgba(126,211,164,.2)"><div class="s-fill" style="width:50%;background:var(--green)"></div></div>
-        <div class="s-games">死亡搁浅 ✓ · 死亡搁浅2 <span style="color:var(--green)">▶ playing</span></div>
+      <div class="series-card full">
+        <span class="s-title">Death Stranding</span><span class="s-tag" style="color:var(--green)">2/2 ✓</span>
+        <div class="s-track" style="border-color:rgba(126,211,164,.3)"><div class="s-fill" style="width:100%;background:var(--green)"></div></div>
+        <div class="s-games">死亡搁浅 ✓ · 死亡搁浅2 ✓</div>
       </div>
     </div>
   </section>
@@ -331,10 +356,10 @@ body::after{
   <!-- ═══════════════ COMPLETED ═══════════════ -->
   <section class="section">
     <div class="prompt">jq <span class="cmd">'.completed[] | .name'</span> gaming_profile.json</div>
-    <h2 class="h2">已通关 · 49 款</h2>
+    <h2 class="h2">已通关 · 51 款 <span class="pt-legend"><span class="pt-legend-icon">✧ 白金奖杯</span> 全奖杯达成</span></h2>
     <p class="lede">每一款都是真金白银+时间的投入</p>
 
-    <h3 class="h3" style="margin-top:28px">动作冒险 · 20</h3>
+    <h3 class="h3" style="margin-top:28px">动作冒险 · 21</h3>
     <div class="games-grid" id="g-action"></div>
 
     <h3 class="h3" style="margin-top:28px">动作 RPG / ARPG · 7</h3>
@@ -343,7 +368,7 @@ body::after{
     <h3 class="h3" style="margin-top:28px">FPS / 射击 · 6</h3>
     <div class="games-grid" id="g-fps"></div>
 
-    <h3 class="h3" style="margin-top:28px">平台跳跃 · 4</h3>
+    <h3 class="h3" style="margin-top:28px">平台跳跃 · 5</h3>
     <div class="games-grid" id="g-platformer"></div>
 
     <h3 class="h3" style="margin-top:28px">RPG / 叙事 / 其他 · 11</h3>
@@ -358,20 +383,15 @@ body::after{
   <!-- ═══════════════ BACKLOG ═══════════════ -->
   <section class="section">
     <div class="prompt">jq <span class="cmd">'.backlog[] | .name'</span> gaming_profile.json</div>
-    <h2 class="h2">待挑战 · 19 款</h2>
+    <h2 class="h2">待挑战 · 20 款</h2>
     <p class="lede">排队等临幸，迟早会通关</p>
     <div class="backlog-grid" id="backlog-list"></div>
-    <div class="cta-card">
-      <div class="label">// 最值得期待</div>
-      <div class="name">浪人崛起</div>
-      <div class="desc">你通了卧龙、师父、只狼——Team Ninja 的战国动作是你的舒适区。浪人崛起是这条线路上最新的一站，开放世界 + 多流派武器切换，值得下一个开。</div>
-    </div>
   </section>
 
   <!-- ═══════════════ FOOTER ═══════════════ -->
   <div class="foot">
     <span>gaming_report · 头上有灰机 · 2026</span>
-    <span style="float:right">last_update: 2026-05-21</span>
+    <span style="float:right">last_update: 2026-06-20</span>
   </div>
 
 </div>
@@ -381,13 +401,14 @@ const games = {
   'g-action': [
     '战神4','战神5','神秘海域4','最后生还者','最后生还者2',
     '漫威蜘蛛侠','蜘蛛侠：迈尔斯','漫威蜘蛛侠2','对马岛之魂','死亡搁浅',
+    '死亡搁浅2',
     '刺客信条：英灵殿','星球大战绝地：陨落的武士团','星球大战绝地：幸存者',
     '地平线：西之绝境','最后的守护者','凯娜：精神之桥','漫威银河护卫队',
     '剑星','钢铁之尾','死亡回归'
   ],
   'g-arpg': ['黑神话：悟空','卧龙：苍天陨落','只狼','死亡岛2','暗黑破坏神4','小缇娜的奇幻之地','师父'],
   'g-fps': ['使命召唤16：现代战争','使命召唤19：现代战争2','使命召唤17：黑色行动冷战','孤岛惊魂6','狙击精英5','ARC Raiders'],
-  'g-platformer': ['瑞奇与叮当','瑞奇与叮当：时空跳跃','宇宙机器人','茶杯头'],
+  'g-platformer': ['宇宙机器人无线控制器使用指南','宇宙机器人','瑞奇与叮当','瑞奇与叮当：时空跳跃','茶杯头'],
   'g-other': [
     '最终幻想7重制版','赛博朋克2077','底特律：变人','生化危机3',
     '双人成行','无间冥寺','装甲核心：境界天火','渡神纪：芬尼斯崛起',
@@ -405,13 +426,20 @@ const backlog = [
   {name:'波斯王子：失落的王冠',genre:'平台跳跃'},{name:'索尼克：未知边境',genre:'平台跳跃'},
   {name:'GT赛车7',genre:'竞速'},
   {name:'极限竞速：地平线6',genre:'竞速'},{name:'沙罗周期',genre:'射击/动作冒险'},
-  {name:'影之刃零',genre:'ARPG'},{name:'漫威金刚狼',genre:'动作冒险'},
+  {name:'影之刃零',genre:'ARPG'},{name:'战神：劳菲',genre:'动作冒险'},{name:'漫威金刚狼',genre:'动作冒险'},
   {name:'GTA6',genre:'动作冒险'},{name:'古墓丽影：亚特兰蒂斯遗迹',genre:'动作冒险'},
 ];
 
+const platinum = new Set(['战神4','战神5','宇宙机器人无线控制器使用指南','宇宙机器人','死亡搁浅2']);
+
 Object.entries(games).forEach(([id, list]) => {
   const el = document.getElementById(id);
-  if (el) el.innerHTML = list.map(g => `<div class="game-chip">${g}</div>`).join('');
+  if (el) el.innerHTML = list.map(g => {
+    if (platinum.has(g)) {
+      return `<div class="game-chip platinum" title="白金奖杯">${g}<span class="pt-tip">✧ 白金奖杯</span></div>`;
+    }
+    return `<div class="game-chip">${g}</div>`;
+  }).join('');
 });
 
 document.getElementById('backlog-list').innerHTML = backlog.map(b =>
