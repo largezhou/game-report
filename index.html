@@ -267,6 +267,7 @@ const COMPLETED = [
   {name:'对马岛之魂',genre:'动作冒险',ps:true},
   {name:'死亡搁浅',genre:'动作冒险',series:'Death Stranding',ps:true},
   {name:'死亡搁浅2',genre:'动作冒险',series:'Death Stranding',platinum:true,ps:true},
+  {name:'浪人崛起',genre:'动作冒险',ps:true},
   {name:'刺客信条：英灵殿',genre:'动作冒险'},
   {name:'星球大战绝地：陨落的武士团',genre:'动作冒险',series:'Star Wars Jedi'},
   {name:'星球大战绝地：幸存者',genre:'动作冒险',series:'Star Wars Jedi'},
@@ -277,6 +278,7 @@ const COMPLETED = [
   {name:'剑星',genre:'动作冒险'},
   {name:'钢铁之尾',genre:'动作冒险'},
   {name:'死亡回归',genre:'动作冒险',ps:true},
+  {name:'幻兽帕鲁',genre:'动作冒险'},
   // ARPG
   {name:'黑神话：悟空',genre:'ARPG'},
   {name:'卧龙：苍天陨落',genre:'ARPG'},
@@ -299,6 +301,7 @@ const COMPLETED = [
   {name:'瑞奇与叮当',genre:'平台跳跃',series:'Ratchet & Clank',ps:true},
   {name:'瑞奇与叮当：时空跳跃',genre:'平台跳跃',series:'Ratchet & Clank',ps:true},
   {name:'茶杯头',genre:'平台跳跃'},
+  {name:'波斯王子：失落的王冠',genre:'平台跳跃'},
   // RPG/叙事
   {name:'最终幻想7重制版',genre:'RPG/叙事'},
   {name:'赛博朋克2077',genre:'RPG/叙事'},
@@ -316,7 +319,6 @@ const COMPLETED = [
 ];
 
 const BACKLOG = [
-  {name:'浪人崛起',genre:'动作冒险'},
   {name:'刺客信条：幻景',genre:'动作冒险'},
   {name:'羊蹄山之魂',genre:'动作冒险'},
   {name:'007：初露锋芒',genre:'动作冒险'},
@@ -339,7 +341,7 @@ const BACKLOG = [
 ];
 
 // 正在玩（null = 无）
-const NOW_PLAYING = {name:'波斯王子：失落的王冠',genre:'平台跳跃',dev:'Ubisoft Montpellier',platform:'PS5'};
+const NOW_PLAYING = null;
 
 // 下一个推荐开（null = 不显示卡片）
 const NEXT_PICK = null;
@@ -367,7 +369,7 @@ const GENRES = [
 ];
 
 // 更新日期
-const UPDATED_AT = '2026-07-04';
+const UPDATED_AT = '2026-09-28';
 
 
 // ════════════════════════════════════════════════════════
@@ -467,7 +469,7 @@ const fpsAction = COMPLETED.filter(g => g.genre === 'FPS/射击' || g.genre === 
 const insights = [
   {icon:'🎮', title:'PS5 原生派', text:`${S.ps} 款 PS 独占 / 先发游戏，占通关总数的 ${S.psPct}%。从战神到对马岛，从蜘蛛侠到最后生还者——你是索尼生态的忠实玩家。`},
   {icon:'🔫', title:'枪与刀的二元论', text:`FPS + 动作冒险合计 ${fpsAction} 款，占总数一半以上。你的手柄左扳机永远在按——不是在射击就是在格挡。`},
-  {icon:'🀄', title:'东方审美迁移', text:'黑神话悟空、卧龙、师父、只狼……待玩队列还有浪人崛起、真三国无双、羊蹄山之魂。东方武侠/战国题材正成为新主线。'},
+  {icon:'🀄', title:'东方审美迁移', text:'黑神话悟空、卧龙、师父、只狼、浪人崛起……待玩队列还有真三国无双、羊蹄山之魂。东方武侠/战国题材正成为新主线。'},
   {icon:'🔗', title:'系列忠诚度极高', text:`${multiSeries.map(s => `${s.name} ×${s.done}`).join('、')}——认准一个系列就打通关的习惯，通关率极高。`},
 ];
 
